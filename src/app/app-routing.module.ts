@@ -52,10 +52,6 @@ const routes: VexRoutes = [
             loadChildren: () => import('./pages/apps/social/social.module').then(m => m.SocialModule)
           },
           {
-            path: 'contacts',
-            loadChildren: () => import('./pages/apps/contacts/contacts.module').then(m => m.ContactsModule)
-          },
-          {
             path: 'calendar',
             loadChildren: () => import('./pages/apps/calendar/calendar.module').then(m => m.CalendarModule),
             data: {
@@ -69,36 +65,12 @@ const routes: VexRoutes = [
           {
             path: 'help-center',
             loadChildren: () => import('./pages/apps/help-center/help-center.module').then(m => m.HelpCenterModule),
-          },
-          {
-            path: 'scrumboard',
-            loadChildren: () => import('./pages/apps/scrumboard/scrumboard.module').then(m => m.ScrumboardModule),
-          },
-          {
-            path: 'editor',
-            loadChildren: () => import('./pages/apps/editor/editor.module').then(m => m.EditorModule),
-          },
+          },          
         ]
       },
       {
         path: 'pages',
         children: [
-          {
-            path: 'pricing',
-            loadChildren: () => import('./pages/pages/pricing/pricing.module').then(m => m.PricingModule)
-          },
-          {
-            path: 'faq',
-            loadChildren: () => import('./pages/pages/faq/faq.module').then(m => m.FaqModule)
-          },
-          {
-            path: 'guides',
-            loadChildren: () => import('./pages/pages/guides/guides.module').then(m => m.GuidesModule)
-          },
-          {
-            path: 'invoice',
-            loadChildren: () => import('./pages/pages/invoice/invoice.module').then(m => m.InvoiceModule)
-          },
           {
             path: 'error-404',
             loadChildren: () => import('./pages/pages/errors/error-404/error-404.module').then(m => m.Error404Module)

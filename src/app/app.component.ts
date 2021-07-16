@@ -111,7 +111,7 @@ export class AppComponent {
       },
       {
         type: 'subheading',
-        label: 'Apps',
+        label: 'MENUS DO SISTEMA',
         children: [
           {
             type: 'dropdown',
@@ -186,122 +186,9 @@ export class AppComponent {
                 route: '/apps/social/timeline'
               },
             ]
-          },
-          {
-            type: 'link',
-            label: 'WYSIWYG Editor',
-            route: '/apps/editor',
-            icon: icChromeReaderMode
-          },
-          {
-            type: 'dropdown',
-            label: 'Contacts',
-            icon: icContacts,
-            children: [
-              {
-                type: 'link',
-                label: 'List - Grid',
-                route: '/apps/contacts/grid',
-              },
-              {
-                type: 'link',
-                label: 'List - Table',
-                route: '/apps/contacts/table',
-              }
-            ]
-          },
-          {
-            type: 'link',
-            label: 'Scrumboard',
-            route: '/apps/scrumboard',
-            icon: icAssessment,
-            badge: {
-              value: 'NEW',
-              bgClass: 'bg-primary',
-              textClass: 'text-primary-contrast',
-            }
-          },
+          },                    
         ]
-      },
-      {
-        type: 'subheading',
-        label: 'Pages',
-        children: [
-          {
-            type: 'dropdown',
-            label: 'Authentication',
-            icon: icLock,
-            children: [
-              {
-                type: 'link',
-                label: 'Login',
-                route: '/login'
-              },
-              {
-                type: 'link',
-                label: 'Register',
-                route: '/register'
-              },
-              {
-                type: 'link',
-                label: 'Forgot Password',
-                route: '/forgot-password'
-              }
-            ]
-          },
-          {
-            type: 'dropdown',
-            label: 'Errors',
-            icon: icError,
-            badge: {
-              value: '4',
-              bgClass: 'bg-green',
-              textClass: 'text-green-contrast',
-            },
-            children: [
-              {
-                type: 'link',
-                label: '404',
-                route: '/pages/error-404'
-              },
-              {
-                type: 'link',
-                label: '500',
-                route: '/pages/error-500'
-              }
-            ]
-          },
-          {
-            type: 'link',
-            label: 'Pricing',
-            icon: icAttachMoney,
-            route: '/pages/pricing'
-          },
-          {
-            type: 'link',
-            label: 'Invoice',
-            icon: icReceipt,
-            route: '/pages/invoice'
-          },
-          {
-            type: 'link',
-            label: 'FAQ',
-            icon: icHelp,
-            route: '/pages/faq'
-          },         
-        ]
-      },
-      {
-        type: 'subheading',
-        label: 'Customize',
-        children: []
-      },
-      {
-        type: 'link',
-        label: 'Configuration',
-        route: () => this.layoutService.openConfigpanel(),
-        icon: icSettings
-      }
+      },      
     ];
   }
 }
