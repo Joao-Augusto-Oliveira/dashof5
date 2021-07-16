@@ -15,10 +15,10 @@ import { CustomLayoutModule } from './custom-layout/custom-layout.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    CustomLayoutModule,
 
     // Vex
     VexModule,
-    CustomLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

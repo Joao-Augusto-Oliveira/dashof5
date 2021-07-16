@@ -112,11 +112,7 @@ const routes: VexRoutes = [
             loadChildren: () => import('./pages/pages/errors/error-500/error-500.module').then(m => m.Error500Module)
           }
         ]
-      },
-      {
-        path: 'documentation',
-        loadChildren: () => import('./pages/documentation/documentation.module').then(m => m.DocumentationModule),
-      },
+      },      
       {
         path: '**',
         loadChildren: () => import('./pages/pages/errors/error-404/error-404.module').then(m => m.Error404Module)
