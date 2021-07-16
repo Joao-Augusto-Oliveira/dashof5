@@ -1,0 +1,421 @@
+import { Component, Inject, LOCALE_ID, Renderer2 } from '@angular/core';
+import { ConfigService } from '../@vex/services/config.service';
+import { Settings } from 'luxon';
+import { DOCUMENT } from '@angular/common';
+import { Platform } from '@angular/cdk/platform';
+import { NavigationService } from '../@vex/services/navigation.service';
+import icLayers from '@iconify/icons-ic/twotone-layers';
+import icAssigment from '@iconify/icons-ic/twotone-assignment';
+import icContactSupport from '@iconify/icons-ic/twotone-contact-support';
+import icDateRange from '@iconify/icons-ic/twotone-date-range';
+import icChat from '@iconify/icons-ic/twotone-chat';
+import icContacts from '@iconify/icons-ic/twotone-contacts';
+import icAssessment from '@iconify/icons-ic/twotone-assessment';
+import icLock from '@iconify/icons-ic/twotone-lock';
+import icWatchLater from '@iconify/icons-ic/twotone-watch-later';
+import icError from '@iconify/icons-ic/twotone-error';
+import icAttachMoney from '@iconify/icons-ic/twotone-attach-money';
+import icPersonOutline from '@iconify/icons-ic/twotone-person-outline';
+import icReceipt from '@iconify/icons-ic/twotone-receipt';
+import icHelp from '@iconify/icons-ic/twotone-help';
+import icBook from '@iconify/icons-ic/twotone-book';
+import icBubbleChart from '@iconify/icons-ic/twotone-bubble-chart';
+import icFormatColorText from '@iconify/icons-ic/twotone-format-color-text';
+import icStar from '@iconify/icons-ic/twotone-star';
+import icViewCompact from '@iconify/icons-ic/twotone-view-compact';
+import icPictureInPicture from '@iconify/icons-ic/twotone-picture-in-picture';
+import icSettings from '@iconify/icons-ic/twotone-settings';
+import { LayoutService } from '../@vex/services/layout.service';
+import icUpdate from '@iconify/icons-ic/twotone-update';
+import { ActivatedRoute } from '@angular/router';
+import { filter, map } from 'rxjs/operators';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { SplashScreenService } from '../@vex/services/splash-screen.service';
+import { Style, StyleService } from '../@vex/services/style.service';
+import icChromeReaderMode from '@iconify/icons-ic/twotone-chrome-reader-mode';
+import { ConfigName } from '../@vex/interfaces/config-name.model';
+import icMail from '@iconify/icons-ic/twotone-mail';
+
+@Component({
+  selector: 'vex-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
+export class AppComponent {
+  title = 'vex';
+
+  constructor(private configService: ConfigService,
+              private styleService: StyleService,
+              private renderer: Renderer2,
+              private platform: Platform,
+              @Inject(DOCUMENT) private document: Document,
+              @Inject(LOCALE_ID) private localeId: string,
+              private layoutService: LayoutService,
+              private route: ActivatedRoute,
+              private navigationService: NavigationService,
+              private splashScreenService: SplashScreenService) {
+    Settings.defaultLocale = this.localeId;
+
+    if (this.platform.BLINK) {
+      this.renderer.addClass(this.document.body, 'is-blink');
+    }
+
+    /**
+     * Customize the template to your needs with the ConfigService
+     * Example:
+     *  this.configService.updateConfig({
+     *    sidenav: {
+     *      title: 'Custom App',
+     *      imageUrl: '//placehold.it/100x100',
+     *      showCollapsePin: false
+     *    },
+     *    footer: {
+     *      visible: false
+     *    }
+     *  });
+     */
+
+    /**
+     * Config Related Subscriptions
+     * You can remove this if you don't need the functionality of being able to enable specific configs with queryParams
+     * Example: example.com/?layout=apollo&style=default
+     */
+    this.route.queryParamMap.pipe(
+      filter(queryParamMap => queryParamMap.has('rtl')),
+      map(queryParamMap => coerceBooleanProperty(queryParamMap.get('rtl'))),
+    ).subscribe(isRtl => {
+      this.configService.updateConfig({
+        rtl: isRtl
+      });
+    });
+
+    this.route.queryParamMap.pipe(
+      filter(queryParamMap => queryParamMap.has('layout'))
+    ).subscribe(queryParamMap => this.configService.setConfig(queryParamMap.get('layout') as ConfigName));
+
+    this.route.queryParamMap.pipe(
+      filter(queryParamMap => queryParamMap.has('style'))
+    ).subscribe(queryParamMap => this.styleService.setStyle(queryParamMap.get('style') as Style));
+
+
+    /**
+     * Add your own routes here
+     */
+    this.navigationService.items = [
+      {
+        type: 'link',
+        label: 'Dashboard',
+        route: '/',
+        icon: icLayers,
+        routerLinkActiveOptions: { exact: true }
+      },
+      {
+        type: 'subheading',
+        label: 'Apps',
+        children: [
+          {
+            type: 'dropdown',
+            label: 'Cadastros',
+            icon: icContactSupport,
+            children: [
+              {
+                type: 'link',
+                label: 'Products',
+                route: '/apps/aio-table',
+                icon: icAssigment,
+              },
+              {
+                type: 'link',
+                label: 'Pricing & Plans',
+                route: '/apps/help-center/pricing'
+              },
+              {
+                type: 'link',
+                label: 'FAQ',
+                route: '/apps/help-center/faq'
+              },
+              {
+                type: 'link',
+                label: 'Guides',
+                route: '/apps/help-center/guides'
+              }
+            ]
+          },
+          {
+            type: 'link',
+            label: 'Calendar',
+            route: '/apps/calendar',
+            icon: icDateRange,
+            badge: {
+              value: '12',
+              bgClass: 'bg-deep-purple',
+              textClass: 'text-deep-purple-contrast',
+            },
+          },
+          {
+            type: 'link',
+            label: 'Chat',
+            route: '/apps/chat',
+            icon: icChat,
+            badge: {
+              value: '16',
+              bgClass: 'bg-cyan',
+              textClass: 'text-cyan-contrast',
+            },
+          },
+          {
+            type: 'link',
+            label: 'Mailbox',
+            route: '/apps/mail',
+            icon: icMail,
+          },
+          {
+            type: 'dropdown',
+            label: 'Social',
+            icon: icPersonOutline,
+            children: [
+              {
+                type: 'link',
+                label: 'Profile',
+                route: '/apps/social',
+                routerLinkActiveOptions: { exact: true }
+              },
+              {
+                type: 'link',
+                label: 'Timeline',
+                route: '/apps/social/timeline'
+              },
+            ]
+          },
+          {
+            type: 'link',
+            label: 'WYSIWYG Editor',
+            route: '/apps/editor',
+            icon: icChromeReaderMode
+          },
+          {
+            type: 'dropdown',
+            label: 'Contacts',
+            icon: icContacts,
+            children: [
+              {
+                type: 'link',
+                label: 'List - Grid',
+                route: '/apps/contacts/grid',
+              },
+              {
+                type: 'link',
+                label: 'List - Table',
+                route: '/apps/contacts/table',
+              }
+            ]
+          },
+          {
+            type: 'link',
+            label: 'Scrumboard',
+            route: '/apps/scrumboard',
+            icon: icAssessment,
+            badge: {
+              value: 'NEW',
+              bgClass: 'bg-primary',
+              textClass: 'text-primary-contrast',
+            }
+          },
+        ]
+      },
+      {
+        type: 'subheading',
+        label: 'Pages',
+        children: [
+          {
+            type: 'dropdown',
+            label: 'Authentication',
+            icon: icLock,
+            children: [
+              {
+                type: 'link',
+                label: 'Login',
+                route: '/login'
+              },
+              {
+                type: 'link',
+                label: 'Register',
+                route: '/register'
+              },
+              {
+                type: 'link',
+                label: 'Forgot Password',
+                route: '/forgot-password'
+              }
+            ]
+          },
+          {
+            type: 'link',
+            label: 'Coming Soon',
+            icon: icWatchLater,
+            route: '/coming-soon'
+          },
+          {
+            type: 'dropdown',
+            label: 'Errors',
+            icon: icError,
+            badge: {
+              value: '4',
+              bgClass: 'bg-green',
+              textClass: 'text-green-contrast',
+            },
+            children: [
+              {
+                type: 'link',
+                label: '404',
+                route: '/pages/error-404'
+              },
+              {
+                type: 'link',
+                label: '500',
+                route: '/pages/error-500'
+              }
+            ]
+          },
+          {
+            type: 'link',
+            label: 'Pricing',
+            icon: icAttachMoney,
+            route: '/pages/pricing'
+          },
+          {
+            type: 'link',
+            label: 'Invoice',
+            icon: icReceipt,
+            route: '/pages/invoice'
+          },
+          {
+            type: 'link',
+            label: 'FAQ',
+            icon: icHelp,
+            route: '/pages/faq'
+          },
+          {
+            type: 'link',
+            label: 'Guides',
+            icon: icBook,
+            route: '/pages/guides',
+            badge: {
+              value: '18',
+              bgClass: 'bg-teal',
+              textClass: 'text-teal-contrast',
+            },
+          },
+        ]
+      },
+      {
+        type: 'subheading',
+        label: 'Documentation',
+        children: [
+          {
+            type: 'link',
+            label: 'Changelog',
+            route: '/documentation/changelog',
+            icon: icUpdate
+          },
+          {
+            type: 'dropdown',
+            label: 'Getting Started',
+            icon: icBook,
+            children: [
+              {
+                type: 'link',
+                label: 'Introduction',
+                route: '/documentation/introduction',
+                fragment: 'introduction',
+                routerLinkActiveOptions: { exact: true }
+              },
+              {
+                type: 'link',
+                label: 'Folder Structure',
+                route: '/documentation/folder-structure',
+                fragment: 'folder-structure',
+                routerLinkActiveOptions: { exact: true }
+              },
+              {
+                type: 'link',
+                label: 'Installation',
+                route: '/documentation/installation',
+                fragment: 'installation',
+                routerLinkActiveOptions: { exact: true }
+              },
+              {
+                type: 'link',
+                label: 'Development Server',
+                route: '/documentation/start-development-server',
+                fragment: 'start-development-server',
+                routerLinkActiveOptions: { exact: true }
+              },
+              {
+                type: 'link',
+                label: 'Build for Production',
+                route: '/documentation/build-for-production',
+                fragment: 'build-for-production',
+                routerLinkActiveOptions: { exact: true }
+              }
+            ]
+          },
+          {
+            type: 'dropdown',
+            label: 'Customization',
+            icon: icBook,
+            children: [
+              {
+                type: 'link',
+                label: 'Configuration',
+                route: '/documentation/configuration',
+                fragment: 'configuration',
+                routerLinkActiveOptions: { exact: true }
+              },
+              {
+                type: 'link',
+                label: 'Changing Styling',
+                route: '/documentation/changing-styling-and-css-variables',
+                fragment: 'changing-styling-and-css-variables',
+                routerLinkActiveOptions: { exact: true }
+              },
+              {
+                type: 'link',
+                label: 'Using Custom Colors',
+                route: '/documentation/using-custom-colors-for-the-primarysecondarywarn-palettes',
+                fragment: 'using-custom-colors-for-the-primarysecondarywarn-palettes',
+                routerLinkActiveOptions: { exact: true }
+              },
+              {
+                type: 'link',
+                label: 'Adding Menu Items',
+                route: '/documentation/adding-menu-items',
+                fragment: 'adding-menu-items',
+                routerLinkActiveOptions: { exact: true }
+              },
+            ]
+          },
+          {
+            type: 'link',
+            label: 'Further Help',
+            icon: icBook,
+            route: '/documentation/further-help',
+            fragment: 'further-help',
+            routerLinkActiveOptions: { exact: true }
+          },
+        ]
+      },
+      {
+        type: 'subheading',
+        label: 'Customize',
+        children: []
+      },
+      {
+        type: 'link',
+        label: 'Configuration',
+        route: () => this.layoutService.openConfigpanel(),
+        icon: icSettings
+      }
+    ];
+  }
+}
