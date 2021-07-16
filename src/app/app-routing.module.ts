@@ -22,35 +22,8 @@ const routes: VexRoutes = [
     component: CustomLayoutComponent,
     children: [
       {
-        path: 'dashboards/analytics',
-        redirectTo: '/'
-      },
-      {
-        path: '',
-        loadChildren: () => import('./pages/dashboards/dashboard-analytics/dashboard-analytics.module').then(m => m.DashboardAnalyticsModule),
-      },
-      {
         path: 'apps',
-        children: [
-          {
-            path: 'chat',
-            loadChildren: () => import('./pages/apps/chat/chat.module').then(m => m.ChatModule),
-            data: {
-              toolbarShadowEnabled: true
-            }
-          },
-          {
-            path: 'mail',
-            loadChildren: () => import('./pages/apps/mail/mail.module').then(m => m.MailModule),
-            data: {
-              toolbarShadowEnabled: true,
-              scrollDisabled: true
-            }
-          },
-          {
-            path: 'social',
-            loadChildren: () => import('./pages/apps/social/social.module').then(m => m.SocialModule)
-          },
+        children: [                        
           {
             path: 'calendar',
             loadChildren: () => import('./pages/apps/calendar/calendar.module').then(m => m.CalendarModule),
@@ -61,11 +34,7 @@ const routes: VexRoutes = [
           {
             path: 'aio-table',
             loadChildren: () => import('./pages/apps/aio-table/aio-table.module').then(m => m.AioTableModule),
-          },
-          {
-            path: 'help-center',
-            loadChildren: () => import('./pages/apps/help-center/help-center.module').then(m => m.HelpCenterModule),
-          },          
+          },                   
         ]
       },
       {
