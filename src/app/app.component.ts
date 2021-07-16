@@ -250,12 +250,6 @@ export class AppComponent {
             ]
           },
           {
-            type: 'link',
-            label: 'Coming Soon',
-            icon: icWatchLater,
-            route: '/coming-soon'
-          },
-          {
             type: 'dropdown',
             label: 'Errors',
             icon: icError,
@@ -294,8 +288,7 @@ export class AppComponent {
             label: 'FAQ',
             icon: icHelp,
             route: '/pages/faq'
-          },
-         
+          },         
         ]
       },
       {
