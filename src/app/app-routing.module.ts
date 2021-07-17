@@ -22,6 +22,17 @@ const routes: VexRoutes = [
     component: CustomLayoutComponent,
     children: [
       {
+        path: 'calendar',
+        redirectTo: '/'
+      },
+      {
+        path: '',
+        loadChildren: () => import('./pages/apps/calendar/calendar.module').then(m => m.CalendarModule),
+        data: {
+          toolbarShadowEnabled: true
+        }
+      },
+      {
         path: 'apps',
         children: [                        
           {
@@ -53,7 +64,7 @@ const routes: VexRoutes = [
       {
         path: '**',
         loadChildren: () => import('./pages/pages/errors/error-404/error-404.module').then(m => m.Error404Module)
-      }
+      },     
     ]
   }
 ];

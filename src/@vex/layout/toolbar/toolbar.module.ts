@@ -11,7 +11,7 @@ import { IconModule } from '@visurel/iconify-angular';
 import { NavigationModule } from '../navigation/navigation.module';
 import { RouterModule } from '@angular/router';
 import { NavigationItemModule } from '../../components/navigation-item/navigation-item.module';
-import { MegaMenuModule } from '../../components/mega-menu/mega-menu.module';
+// import { MegaMenuModule } from '../../components/mega-menu/mega-menu.module';
 import { ContainerModule } from '../../directives/container/container.module';
 
 
@@ -29,7 +29,6 @@ import { ContainerModule } from '../../directives/container/container.module';
     NavigationModule,
     RouterModule,
     NavigationItemModule,
-    MegaMenuModule,
     ContainerModule
   ],
   exports: [ToolbarComponent]
