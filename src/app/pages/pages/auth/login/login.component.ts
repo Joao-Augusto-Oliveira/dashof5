@@ -5,6 +5,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import icVisibility from '@iconify/icons-ic/twotone-visibility';
 import icVisibilityOff from '@iconify/icons-ic/twotone-visibility-off';
 import { fadeInUp400ms } from '../../../../../@vex/animations/fade-in-up.animation';
+import { Usuario } from './usuario';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'vex-login',
@@ -17,6 +19,8 @@ import { fadeInUp400ms } from '../../../../../@vex/animations/fade-in-up.animati
 })
 export class LoginComponent implements OnInit {
 
+  usuario: Usuario = {nome: '', senha: ''};
+
   form: FormGroup;
 
   inputType = 'password';
@@ -28,7 +32,8 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router,
               private fb: FormBuilder,
               private cd: ChangeDetectorRef,
-              private snackbar: MatSnackBar
+              private snackbar: MatSnackBar,
+              private authService: AuthService,
   ) {}
 
   ngOnInit() {
@@ -39,10 +44,7 @@ export class LoginComponent implements OnInit {
   }
 
   send() {
-    this.router.navigate(['/']);
-    this.snackbar.open('Lucky you! Looks like you didn\'t need a password or email address! For a real application we provide validators to prevent this. ;)', 'LOL THANKS', {
-      duration: 10000
-    });
+    this.authService.fazerLogin(this.usuario);
   }
 
   toggleVisibility() {

@@ -13,7 +13,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
-
 @NgModule({
   declarations: [LoginComponent],
   imports: [
@@ -27,7 +26,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     IconModule,
     MatTooltipModule,
     MatButtonModule,
-    MatCheckboxModule
+    MatCheckboxModule, 
   ]
 })
 export class LoginModule {
