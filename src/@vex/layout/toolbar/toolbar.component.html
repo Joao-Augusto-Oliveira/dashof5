@@ -10,15 +10,7 @@
      fxLayoutAlign="start center">
     <img class="w-8 select-none" src="assets/img/demo/logo.svg">
     <h1 [fxHide]="mobileQuery" class="title ltr:pl-4 rtl:pr-4 m-0 select-none">VEX</h1>
-  </a>
-
-  <button *ngIf="isHorizontalLayout$ | async"
-          [fxHide]="mobileQuery"
-          [matMenuTriggerFor]="addNewMenu"
-          color="primary"
-          mat-raised-button
-          type="button">ADD NEW
-  </button>
+  </a> 
 
   <mat-menu #addNewMenu="matMenu" [overlapTrigger]="false" xPosition="after" yPosition="below">
     <button mat-menu-item>
@@ -82,11 +74,8 @@
 
   <span fxFlex></span>
 
-  <div class="-mx-1 flex items-center">    
-    <div class="px-1">
-      <vex-toolbar-notifications></vex-toolbar-notifications>
-    </div>    
-
+  <div class="-mx-1 flex items-center">   
+    
     <div class="px-1">
       <vex-toolbar-user></vex-toolbar-user>
     </div>    
