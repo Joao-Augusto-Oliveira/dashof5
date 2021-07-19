@@ -53,6 +53,8 @@
     "@angular/cli": "~11.2.4",
     "@angular/compiler-cli": "~11.2.5",
     "@angular/language-service": "~11.2.5",
+    "@iconify-icons/ic": "^1.1.7",
+    "@iconify-icons/mdi": "^1.1.16",
     "@types/faker": "^5.1.5",
     "@types/jasmine": "~3.6.1",
     "@types/jasminewd2": "~2.0.8",

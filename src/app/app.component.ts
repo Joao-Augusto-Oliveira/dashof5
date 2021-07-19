@@ -4,8 +4,6 @@ import { Settings } from 'luxon';
 import { DOCUMENT } from '@angular/common';
 import { Platform } from '@angular/cdk/platform';
 import { NavigationService } from '../@vex/services/navigation.service';
-import icAssigment from '@iconify/icons-ic/twotone-assignment';
-import icContactSupport from '@iconify/icons-ic/twotone-contact-support';
 import icDateRange from '@iconify/icons-ic/twotone-date-range';
 import { LayoutService } from '../@vex/services/layout.service';
 import { ActivatedRoute } from '@angular/router';
@@ -14,6 +12,11 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { SplashScreenService } from '../@vex/services/splash-screen.service';
 import { Style, StyleService } from '../@vex/services/style.service';
 import { ConfigName } from '../@vex/interfaces/config-name.model';
+
+import baselineApps from '@iconify-icons/ic/baseline-apps';
+import developerBoard from '@iconify-icons/mdi/developer-board';
+import baselineShowChart from '@iconify-icons/ic/baseline-show-chart';
+
 
 @Component({
   selector: 'vex-root',
@@ -88,27 +91,29 @@ export class AppComponent {
           {
             type: 'dropdown',
             label: 'Cadastros',
-            icon: icContactSupport,
+            icon: baselineApps,
             children: [
               {
                 type: 'link',
                 label: 'Products',
                 route: '/apps/aio-table',
-                icon: icAssigment,
+                icon: developerBoard,
               }              
             ]
           },
           {
-            type: 'link',
-            label: 'Calendar',
-            route: '/apps/calendar',
-            icon: icDateRange,
-            badge: {
-              value: '12',
-              bgClass: 'bg-deep-purple',
-              textClass: 'text-deep-purple-contrast',
-            },
-          },                                         
+            type: 'dropdown',
+            label: 'Dashboard',
+            icon: baselineShowChart,
+            children: [
+              {
+                type: 'link',
+                label: 'Agenda',
+                route: '/apps/calendar',
+                icon: icDateRange,         
+              }, 
+            ]
+          }                                             
         ]
       },      
     ];

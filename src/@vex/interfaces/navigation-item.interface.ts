@@ -31,5 +31,6 @@ export interface NavigationDropdown {
 export interface NavigationSubheading {
   type: 'subheading';
   label: string;
+  icon?: Icon;
   children: Array<NavigationLink | NavigationDropdown>;
 }
