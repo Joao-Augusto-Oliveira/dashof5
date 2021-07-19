@@ -4,6 +4,7 @@ import { CustomLayoutComponent } from './custom-layout/custom-layout.component';
 import { VexRoutes } from '../@vex/interfaces/vex-route.interface';
 import { QuicklinkModule, QuicklinkStrategy } from 'ngx-quicklink';
 import { AuthGuard } from './guards/auth.guard';
+import { ChildsGuard } from './guards/childs.guard';
 
 const routes: VexRoutes = [
   {
@@ -20,23 +21,25 @@ const routes: VexRoutes = [
     children: [
       {
         path: 'calendar',
-        redirectTo: '/'
+        redirectTo: '/',       
       },
       {
         path: '',
-        loadChildren: () => import('./pages/apps/calendar/calendar.module').then(m => m.CalendarModule),
-        canActivate: [AuthGuard],
+       loadChildren: () => import('./pages/apps/calendar/calendar.module').then(m => m.CalendarModule),
+       canActivate: [AuthGuard],
+       canActivateChild: [ChildsGuard],
         data: {
           toolbarShadowEnabled: true
         }
       },
       {
         path: 'apps',
+        canActivate: [AuthGuard],
+        canActivateChild: [ChildsGuard],
         children: [                        
           {
             path: 'calendar',
             loadChildren: () => import('./pages/apps/calendar/calendar.module').then(m => m.CalendarModule),
-            canActivate: [AuthGuard],
             data: {
               toolbarShadowEnabled: true
             }
@@ -44,29 +47,29 @@ const routes: VexRoutes = [
           {
             path: 'aio-table',
             loadChildren: () => import('./pages/apps/aio-table/aio-table.module').then(m => m.AioTableModule),
-            canActivate: [AuthGuard]
           },                   
         ]
       },
       {
         path: 'pages',
+        canActivate: [AuthGuard],
+        canActivateChild: [ChildsGuard],
         children: [
           {
             path: 'error-404',
             loadChildren: () => import('./pages/pages/errors/error-404/error-404.module').then(m => m.Error404Module),
-            canActivate: [AuthGuard]
           },
           {
             path: 'error-500',
             loadChildren: () => import('./pages/pages/errors/error-500/error-500.module').then(m => m.Error500Module),
-            canActivate: [AuthGuard]
           }
         ]
       },      
       {
         path: '**',
+        // canActivate: [AuthGuard],
+        // canActivateChild: [ChildsGuard],
         loadChildren: () => import('./pages/pages/errors/error-404/error-404.module').then(m => m.Error404Module),
-        canActivate: [AuthGuard]
       },     
     ]
   }

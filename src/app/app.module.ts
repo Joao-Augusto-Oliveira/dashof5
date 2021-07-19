@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CustomLayoutModule } from './custom-layout/custom-layout.module';
 import { AuthService } from './pages/pages/auth/login/auth.service';
 import { AuthGuard } from './guards/auth.guard';
+import { ChildsGuard } from './guards/childs.guard';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,7 +23,11 @@ import { AuthGuard } from './guards/auth.guard';
     // Vex
     VexModule,
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [
+    AuthService, 
+    AuthGuard,
+    ChildsGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
