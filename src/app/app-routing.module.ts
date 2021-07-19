@@ -5,6 +5,7 @@ import { VexRoutes } from '../@vex/interfaces/vex-route.interface';
 import { QuicklinkModule, QuicklinkStrategy } from 'ngx-quicklink';
 import { AuthGuard } from './guards/auth.guard';
 import { ChildsGuard } from './guards/childs.guard';
+import { AlertGuard } from './guards/alert.guard';
 
 const routes: VexRoutes = [
   {
@@ -31,15 +32,15 @@ const routes: VexRoutes = [
         data: {
           toolbarShadowEnabled: true
         }
-      },
+      },     
       {
         path: 'apps',
-        canActivate: [AuthGuard],
-        canActivateChild: [ChildsGuard],
+        canActivate: [AuthGuard],        
         children: [                        
           {
             path: 'calendar',
             loadChildren: () => import('./pages/apps/calendar/calendar.module').then(m => m.CalendarModule),
+            canActivateChild: [ChildsGuard],
             data: {
               toolbarShadowEnabled: true
             }
@@ -47,28 +48,24 @@ const routes: VexRoutes = [
           {
             path: 'aio-table',
             loadChildren: () => import('./pages/apps/aio-table/aio-table.module').then(m => m.AioTableModule),
-          },                   
+            canActivateChild: [ChildsGuard],
+          }         
         ]
       },
       {
         path: 'pages',
         canActivate: [AuthGuard],
         canActivateChild: [ChildsGuard],
-        children: [
+        children: [          
           {
-            path: 'error-404',
-            loadChildren: () => import('./pages/pages/errors/error-404/error-404.module').then(m => m.Error404Module),
+            path: 'dashboards',
+            loadChildren: () => import('./pages/dashboards/dashboard-analytics/dashboard-analytics.module').then(m => m.DashboardAnalyticsModule),
+            canActivateChild: [AlertGuard],
           },
-          {
-            path: 'error-500',
-            loadChildren: () => import('./pages/pages/errors/error-500/error-500.module').then(m => m.Error500Module),
-          }
         ]
       },      
       {
         path: '**',
-        // canActivate: [AuthGuard],
-        // canActivateChild: [ChildsGuard],
         loadChildren: () => import('./pages/pages/errors/error-404/error-404.module').then(m => m.Error404Module),
       },     
     ]

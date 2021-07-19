@@ -10,6 +10,7 @@ import { CustomLayoutModule } from './custom-layout/custom-layout.module';
 import { AuthService } from './pages/pages/auth/login/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { ChildsGuard } from './guards/childs.guard';
+import { AlertGuard } from './guards/alert.guard';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,7 +27,8 @@ import { ChildsGuard } from './guards/childs.guard';
   providers: [
     AuthService, 
     AuthGuard,
-    ChildsGuard
+    ChildsGuard,
+    AlertGuard
   ],
   bootstrap: [AppComponent]
 })

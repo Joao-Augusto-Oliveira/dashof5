@@ -112,6 +112,12 @@ export class AppComponent {
                 route: '/apps/calendar',
                 icon: icDateRange,         
               }, 
+              {
+                type: 'link',
+                label: 'Indicadores',
+                route: '/pages/dashboards',
+                icon: icDateRange,         
+              }, 
             ]
           }                                             
         ]
