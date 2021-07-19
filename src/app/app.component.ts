@@ -16,6 +16,8 @@ import { ConfigName } from '../@vex/interfaces/config-name.model';
 import baselineApps from '@iconify-icons/ic/baseline-apps';
 import developerBoard from '@iconify-icons/mdi/developer-board';
 import baselineShowChart from '@iconify-icons/ic/baseline-show-chart';
+import baselineDashboard from '@iconify-icons/ic/baseline-dashboard';
+
 
 
 @Component({
@@ -116,7 +118,7 @@ export class AppComponent {
                 type: 'link',
                 label: 'Indicadores',
                 route: '/pages/indicadores',
-                icon: icDateRange,         
+                icon: baselineDashboard,         
               }, 
             ]
           }                                             
