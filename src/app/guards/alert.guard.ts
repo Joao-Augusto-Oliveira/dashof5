@@ -10,7 +10,7 @@ export class AlertGuard implements CanActivateChild {
     state: RouterStateSnapshot
   ) : Observable<boolean> | boolean {
 
-    if(state.url.includes('dash')){
+    if(state.url.includes('indicadores')){
       alert('Usuário sem acesso!')
       return false;
     }

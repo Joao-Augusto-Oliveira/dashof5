@@ -115,7 +115,7 @@ export class AppComponent {
               {
                 type: 'link',
                 label: 'Indicadores',
-                route: '/pages/dashboards',
+                route: '/pages/indicadores',
                 icon: icDateRange,         
               }, 
             ]
