@@ -6,6 +6,7 @@ import { QuicklinkModule, QuicklinkStrategy } from 'ngx-quicklink';
 import { AuthGuard } from './guards/auth.guard';
 import { ChildsGuard } from './guards/childs.guard';
 import { AlertGuard } from './guards/alert.guard';
+import { AioTableDeactivateGuard } from './guards/aio-table-deactivate.guard';
 
 const routes: VexRoutes = [
   {
@@ -48,8 +49,8 @@ const routes: VexRoutes = [
           {
             path: 'aio-table',
             loadChildren: () => import('./pages/apps/aio-table/aio-table.module').then(m => m.AioTableModule),
-            canActivateChild: [ChildsGuard],
-          }         
+            canActivateChild: [ChildsGuard],                      
+          }               
         ]
       },
       {

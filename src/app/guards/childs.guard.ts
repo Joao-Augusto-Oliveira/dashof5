@@ -10,8 +10,6 @@ export class ChildsGuard implements CanActivateChild {
     state: RouterStateSnapshot
   ) : Observable<boolean> | boolean {
 
-      console.log('guarda de rota filha')
-
       return true;
   
   }

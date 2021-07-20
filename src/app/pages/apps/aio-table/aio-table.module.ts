@@ -1,3 +1,4 @@
+import { AioTableDeactivateGuard } from './../../../guards/aio-table-deactivate.guard';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -45,7 +46,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     ContainerModule,
     MatSelectModule,
     MatButtonToggleModule
-  ]
+  ],
+  providers: [AioTableDeactivateGuard]
 })
 export class AioTableModule {
 }

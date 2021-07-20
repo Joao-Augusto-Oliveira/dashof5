@@ -1,3 +1,4 @@
+import { CustomerCreateUpdateModule } from './pages/apps/aio-table/customer-create-update/customer-create-update.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -11,6 +12,7 @@ import { AuthService } from './pages/pages/auth/login/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { ChildsGuard } from './guards/childs.guard';
 import { AlertGuard } from './guards/alert.guard';
+import { AioTableDeactivateGuard } from './guards/aio-table-deactivate.guard';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,7 +30,8 @@ import { AlertGuard } from './guards/alert.guard';
     AuthService, 
     AuthGuard,
     ChildsGuard,
-    AlertGuard
+    AlertGuard,
+    AioTableDeactivateGuard,
   ],
   bootstrap: [AppComponent]
 })

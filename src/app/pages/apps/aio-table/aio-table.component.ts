@@ -50,6 +50,8 @@ export class AioTableComponent implements OnInit, AfterViewInit {
 
   layoutCtrl = new FormControl('boxed');
 
+  formMudou: boolean = false;
+
   /**
    * Simulating a service with HTTP that returns Observables
    * You probably want to remove this and do all requests in a service with HTTP
@@ -147,6 +149,7 @@ export class AioTableComponent implements OnInit, AfterViewInit {
          */
         this.customers.unshift(new Customer(customer));
         this.subject$.next(this.customers);
+        this.formMudou = true;
       }
     });
   }
@@ -166,6 +169,7 @@ export class AioTableComponent implements OnInit, AfterViewInit {
         const index = this.customers.findIndex((existingCustomer) => existingCustomer.id === updatedCustomer.id);
         this.customers[index] = new Customer(updatedCustomer);
         this.subject$.next(this.customers);
+        this.formMudou = true;
       }
     });
   }
@@ -178,6 +182,7 @@ export class AioTableComponent implements OnInit, AfterViewInit {
     this.customers.splice(this.customers.findIndex((existingCustomer) => existingCustomer.id === customer.id), 1);
     this.selection.deselect(customer);
     this.subject$.next(this.customers);
+    this.formMudou = true;
   }
 
   deleteCustomers(customers: Customer[]) {
@@ -226,4 +231,12 @@ export class AioTableComponent implements OnInit, AfterViewInit {
     this.customers[index].labels = change.value;
     this.subject$.next(this.customers);
   }
+
+  podeMudarRota(){
+    if (this.formMudou) {
+      confirm('Tem certeza que deseja sair dessa página?')
+    }
+    return true;
+  }
+
 }

@@ -100,7 +100,7 @@ export class AppComponent {
                 label: 'Products',
                 route: '/apps/aio-table',
                 icon: developerBoard,
-              }              
+              }                           
             ]
           },
           {

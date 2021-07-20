@@ -12,6 +12,7 @@ import { CustomerCreateUpdateComponent } from './customer-create-update.componen
 import { MatMenuModule } from '@angular/material/menu';
 import { IconModule } from '@visurel/iconify-angular';
 import { MatDividerModule } from '@angular/material/divider';
+import { AioTableDeactivateGuard } from 'src/app/guards/aio-table-deactivate.guard';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { MatDividerModule } from '@angular/material/divider';
   ],
   declarations: [CustomerCreateUpdateComponent],
   entryComponents: [CustomerCreateUpdateComponent],
-  exports: [CustomerCreateUpdateComponent]
+  exports: [CustomerCreateUpdateComponent],
+
 })
 export class CustomerCreateUpdateModule {
 }
