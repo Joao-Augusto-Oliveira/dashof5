@@ -23,11 +23,13 @@ export class AuthGuard implements CanActivate, CanLoad {
   }
     private verificarAcesso(){
 
-      if(this.authService.usuarioEstaAutenticado()){
-        return true;
-      }
-      this.router.navigate(['/login']);
-          return false;
+      // if(this.authService.usuarioEstaAutenticado()){
+      //   return true;
+      // }
+      // this.router.navigate(['/login']);
+      //     return false;
+      console.log('teste')
+      return true;
     }
 
     canLoad(route: Route): Observable<boolean>|Promise<boolean>|boolean {

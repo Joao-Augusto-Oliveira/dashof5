@@ -1,6 +1,17 @@
 <div *ngFor="let character of allCharacters | async">
-    {{character.name}}
+    <h2> {{character.name}}</h2>
+    <p>ID:{{character.id}}</p>
 
-    <img mat-card-image src="{{character.thumbnail.path}}.{{character.thumbnail.extension}}" alt="{{character.name}}">
+    <div *ngIf="!character.comics.available.length">
+        <h3>Participações:</h3>
+    </div>    
+    <p>{{character.comics.available}}</p>
+
+    <div *ngIf="character.comics.items.length">
+        <h3>Última aparição (quadrinhos)</h3>
+    </div>    
+    <p>{{character.comics.items[0].name}}</p>
+<br>
+<br>
 
 </div>

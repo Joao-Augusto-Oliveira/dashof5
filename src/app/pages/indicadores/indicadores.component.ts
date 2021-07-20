@@ -20,4 +20,5 @@ export class IndicadoresComponent  {
     this.allCharacters = this.characterService.getAllCharacters();
   }
 
+
 }
