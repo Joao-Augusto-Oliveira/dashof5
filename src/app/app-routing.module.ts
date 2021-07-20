@@ -6,7 +6,6 @@ import { QuicklinkModule, QuicklinkStrategy } from 'ngx-quicklink';
 import { AuthGuard } from './guards/auth.guard';
 import { ChildsGuard } from './guards/childs.guard';
 import { AlertGuard } from './guards/alert.guard';
-import { AioTableDeactivateGuard } from './guards/aio-table-deactivate.guard';
 
 const routes: VexRoutes = [
   {
@@ -30,13 +29,15 @@ const routes: VexRoutes = [
        loadChildren: () => import('./pages/apps/calendar/calendar.module').then(m => m.CalendarModule),
        canActivate: [AuthGuard],
        canActivateChild: [ChildsGuard],
+       canLoad: [AuthGuard],
         data: {
           toolbarShadowEnabled: true
         }
       },     
       {
         path: 'apps',
-        canActivate: [AuthGuard],        
+        canActivate: [AuthGuard],
+        canLoad: [AuthGuard],        
         children: [                        
           {
             path: 'calendar',
@@ -56,7 +57,6 @@ const routes: VexRoutes = [
       {
         path: 'pages',
         canActivate: [AuthGuard],
-        canActivateChild: [ChildsGuard],
         children: [          
           {
             path: 'indicadores',
