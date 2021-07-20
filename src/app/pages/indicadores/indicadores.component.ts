@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { CharactersApiService } from 'src/app/services/characters-api.service';
 
 @Component({
   selector: 'vex-indicadores',
@@ -7,6 +9,15 @@ import { Component } from '@angular/core';
 })
 export class IndicadoresComponent  {
  
-  constructor() { }
+  constructor(private characterService: CharactersApiService) { }
+  allCharacters: Observable<any>;
+
+  ngOnInit() {
+    this.getCharacters();
+  }
+
+  getCharacters() {
+    this.allCharacters = this.characterService.getAllCharacters();
+  }
 
 }

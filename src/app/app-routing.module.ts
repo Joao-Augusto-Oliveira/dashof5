@@ -61,7 +61,7 @@ const routes: VexRoutes = [
           {
             path: 'indicadores',
             loadChildren: () => import('./pages/indicadores/indicadores.module').then(m => m.IndicadoresModule),
-            canActivateChild: [AlertGuard],
+            // canActivateChild: [AlertGuard],
           },
         ]
       },      

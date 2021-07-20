@@ -1,1 +1,6 @@
-<span>teste</span>
+<div *ngFor="let character of allCharacters | async">
+    {{character.name}}
+
+    <img mat-card-image src="{{character.thumbnail.path}}.{{character.thumbnail.extension}}" alt="{{character.name}}">
+
+</div>
