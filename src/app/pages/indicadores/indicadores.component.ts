@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { empty, Observable, Subject } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { ProductsApiService } from 'src/app/services/products-api.service';
 import { Produto } from '../apps/aio-table/interfaces/products.models';
 
@@ -13,9 +14,17 @@ export class IndicadoresComponent  {
   constructor(private productsService: ProductsApiService) { }
 
   allProducts$: Observable<Produto[]>
+  error$ = new Subject<boolean>();
 
   ngOnInit() {
-     this.allProducts$ = this.productsService.getAllProducts();
+     this.allProducts$ = this.productsService.getAllProducts()
+     .pipe(
+       catchError(error => {
+         console.error(error);
+         this.error$.next(true);
+         return empty();
+       })
+     )
   } 
 
 }

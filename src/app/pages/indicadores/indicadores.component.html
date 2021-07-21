@@ -1,19 +1,24 @@
-<div *ngFor="let product of allProducts$ | async">
-    <h2> {{product.nome}}</h2>
-    <p>ID:{{product.id}}</p>
+<ng-template #listerror>
+    <div *ngIf="error$ | async;">
+        Erro ao carregar produtos. Tente novamente mais tarde.
+    </div>
+</ng-template>
 
-    <!-- <div *ngIf="!product.pragas.length">
-        <h3>Pragas</h3>
-    </div>     -->
-    <p>{{product.pragas.items[0].nome}}</p>
-    <p>{{product.pragas.items[1].nome}}</p>
-
-    
-        <h3>Quantidade</h3>
+<div *ngIf="allProducts$ | async as allProducts; else listerror">
+    <div *ngFor="let product of allProducts">
+        <h2> {{product.nome}}</h2>
+        <p>ID:{{product.id}}</p>
       
-    <p>{{product.estoque}}un</p>
-
-<br>
-<br>
-
+        <h3>Pragas</h3>
+        <p>{{product.pragas.items[0].nome}}</p>
+        <p>{{product.pragas.items[1].nome}}</p>
+        
+        <h3>Quantidade</h3>      
+        <p>{{product.estoque}}un</p>
+    <br>
+    <br>
+    </div>
 </div>
+
+
+
