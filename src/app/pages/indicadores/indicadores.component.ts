@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CharactersApiService } from 'src/app/services/characters-api.service';
+import { ProductsApiService } from 'src/app/services/products-api.service';
+import { Produto } from '../apps/aio-table/interfaces/products.models';
 
 @Component({
   selector: 'vex-indicadores',
@@ -9,16 +10,16 @@ import { CharactersApiService } from 'src/app/services/characters-api.service';
 })
 export class IndicadoresComponent  {
  
-  constructor(private characterService: CharactersApiService) { }
-  allCharacters: Observable<any>;
+  constructor(private productsService: ProductsApiService) { }
+  
+  allProducts: Observable<Produto[]>;
 
   ngOnInit() {
-    this.getCharacters();
+    this.getProducts();
   }
 
-  getCharacters() {
-    this.allCharacters = this.characterService.getAllCharacters();
+  getProducts() {
+    this.allProducts = this.productsService.getAllProducts();
   }
-
 
 }

@@ -1,16 +1,18 @@
-<div *ngFor="let character of allCharacters | async">
-    <h2> {{character.name}}</h2>
-    <p>ID:{{character.id}}</p>
+<div *ngFor="let product of allProducts | async">
+    <h2> {{product.nome}}</h2>
+    <p>ID:{{product.id}}</p>
 
-    <div *ngIf="!character.comics.available.length">
-        <h3>Participações:</h3>
-    </div>    
-    <p>{{character.comics.available}}</p>
+    <!-- <div *ngIf="!product.pragas.length">
+        <h3>Pragas</h3>
+    </div>     -->
+    <p>{{product.pragas.items[0].nome}}</p>
+    <p>{{product.pragas.items[1].nome}}</p>
 
-    <div *ngIf="character.comics.items.length">
-        <h3>Última aparição (quadrinhos)</h3>
-    </div>    
-    <p>{{character.comics.items[0].name}}</p>
+    
+        <h3>Quantidade</h3>
+      
+    <p>{{product.estoque}}un</p>
+
 <br>
 <br>
 
