@@ -1,38 +1,22 @@
 {
-    "produtos": [
-        {
-            "id": "1",
-            "nome": "Regente",
-            "estoque": "2",
-            "pragas": {"items":[{},{}]}            
-        },
-        {
-            "id": "2",
-            "nome": "Veneno rato",
-            "estoque": "6",
-            "pragas": {
-                "items": [
-                {
-                    "nome": "barata"                
-                },
-                {
-                    "nome": "rato"      
-                }
-            ]
-            }           
-        },
-        {
-            "id": "3",
-            "nome": "Veneno abelha",
-            "estoque": "5",
-            "pragas": {"items":[{},{}]}            
-        },
-        {
-            "id": "4",
-            "nome": "Veneno barata",
-            "estoque": "7",
-            "pragas": {"items":[{},{}]}            
-        }
-        
-    ]
+  "produtos": [
+    {
+      "id": "2",
+      "nome": "Veneno rato",
+      "estoque": "6",
+      "pragas": "rato, barata, cobra"
+    },
+    {
+      "id": "3",
+      "nome": "Veneno abelha",
+      "estoque": "5",
+      "pragas": "abelha"
+    },
+    {
+      "id": "4",
+      "nome": "Veneno barata",
+      "estoque": "7",
+      "pragas": "barata"
+    }
+  ]
 }
