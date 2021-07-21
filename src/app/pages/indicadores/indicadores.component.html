@@ -1,4 +1,4 @@
-<div *ngFor="let product of allProducts | async">
+<div *ngFor="let product of allProducts$ | async">
     <h2> {{product.nome}}</h2>
     <p>ID:{{product.id}}</p>
 

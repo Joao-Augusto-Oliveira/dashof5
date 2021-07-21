@@ -11,15 +11,11 @@ import { Produto } from '../apps/aio-table/interfaces/products.models';
 export class IndicadoresComponent  {
  
   constructor(private productsService: ProductsApiService) { }
-  
-  allProducts: Observable<Produto[]>;
+
+  allProducts$: Observable<Produto[]>
 
   ngOnInit() {
-    this.getProducts();
-  }
-
-  getProducts() {
-    this.allProducts = this.productsService.getAllProducts();
-  }
+     this.allProducts$ = this.productsService.getAllProducts();
+  } 
 
 }
