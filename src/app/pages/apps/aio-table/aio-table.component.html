@@ -103,33 +103,7 @@
             <th *matHeaderCellDef class="uppercase" mat-header-cell mat-sort-header> {{ column.label }}</th>
             <td *matCellDef="let row" [ngClass]="column.cssClasses" mat-cell>{{ row[column.property] }}</td>
           </ng-container>
-        </ng-container>
-
-        <!-- Contact Column -->
-        <ng-container matColumnDef="contact">
-          <th *matHeaderCellDef mat-header-cell mat-sort-header></th>
-          <td *matCellDef="let row" mat-cell>
-            <div class="flex">
-              <a (click)="$event.stopPropagation()"
-                 class="w-8 h-8 leading-none flex items-center justify-center hover:bg-hover text-primary bg-primary-light"
-                 mat-icon-button>
-                <mat-icon [icIcon]="icPhone" size="18px"></mat-icon>
-              </a>
-
-              <a (click)="$event.stopPropagation()"
-                 class="w-8 h-8 leading-none flex items-center justify-center ml-1 hover:bg-hover text-teal bg-teal-light"
-                 mat-icon-button>
-                <mat-icon [icIcon]="icMail" size="18px"></mat-icon>
-              </a>
-
-              <a (click)="$event.stopPropagation()"
-                 class="w-8 h-8 leading-none flex items-center justify-center ml-1 hover:bg-hover text-green bg-green-light"
-                 mat-icon-button>
-                <mat-icon [icIcon]="icMap" size="18px"></mat-icon>
-              </a>
-            </div>
-          </td>
-        </ng-container>
+        </ng-container>      
 
         <!-- Label Column -->
         <ng-container matColumnDef="labels">
@@ -150,7 +124,6 @@
                 <ic-icon [icon]="icAdd" size="18px"></ic-icon>
               </div>
               <mat-select #labelSelect="matSelect"
-                          (selectionChange)="onLabelChange($event, row)"
                           [value]="row.labels"
                           class="invisible w-0 h-0 text-sm"
                           fxFlex="0 1 0px"
@@ -180,7 +153,7 @@
         </ng-container>
 
         <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
-        <tr (click)="updateCustomer(row)"
+        <tr (click)="updateProduct(row)"
             *matRowDef="let row; columns: visibleColumns;"
             @fadeInUp
             class="hover:bg-hover trans-ease-out cursor-pointer"
@@ -207,7 +180,7 @@
 <mat-menu #actionsMenu="matMenu" xPosition="before" yPosition="below">
   <ng-template let-product="product" matMenuContent>
     
-    <button (click)="updateCustomer(product)" routerLink="/apps/aio-table/products/update/{{product.id }}"mat-menu-item>
+    <button (click)="updateProduct(product)" routerLink="/apps/aio-table/products/update/{{product.id }}"mat-menu-item>
       <mat-icon [icIcon]="icEdit"></mat-icon>
       <span>Modify</span>
     </button>

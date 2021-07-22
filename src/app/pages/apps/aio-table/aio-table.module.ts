@@ -6,7 +6,6 @@ import { AioTableComponent } from './aio-table.component';
 import { PageLayoutModule } from '../../../../@vex/components/page-layout/page-layout.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BreadcrumbsModule } from '../../../../@vex/components/breadcrumbs/breadcrumbs.module';
-import { CustomerCreateUpdateModule } from './customer-create-update/customer-create-update.module';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
@@ -31,7 +30,7 @@ import { ProductUpdateModule } from './product-update/product-update.module';
     PageLayoutModule,
     FlexLayoutModule,
     BreadcrumbsModule,
-    CustomerCreateUpdateModule,
+    ProductUpdateModule,
     ProductCreateModule,
     MatPaginatorModule,
     MatTableModule,
@@ -46,8 +45,7 @@ import { ProductUpdateModule } from './product-update/product-update.module';
     ReactiveFormsModule,
     ContainerModule,
     MatSelectModule,
-    MatButtonToggleModule,
-    ProductUpdateModule
+    MatButtonToggleModule,    
   ],
   providers: [AioTableDeactivateGuard]
 })

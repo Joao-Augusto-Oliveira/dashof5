@@ -16,7 +16,7 @@ const routes: VexRoutes = [
     children: [
       {
         path: "products/update/:id",
-        loadChildren: () => import('./customer-create-update/customer-create-update.module').then(m => m.CustomerCreateUpdateModule),
+        loadChildren: () => import('./product-update/product-update.module').then(m => m.ProductUpdateModule),
       }
     ]   
   },

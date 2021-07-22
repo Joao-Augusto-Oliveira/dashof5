@@ -1,4 +1,3 @@
-import { CustomerCreateUpdateModule } from './pages/apps/aio-table/customer-create-update/customer-create-update.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 

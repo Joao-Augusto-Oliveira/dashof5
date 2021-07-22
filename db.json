@@ -2,7 +2,7 @@
   "produtos": [
     {
       "id": "3",
-      "nome": "Veneno ",
+      "nome": "V",
       "pragas": "abel",
       "estoque": "5"
     },
@@ -13,10 +13,10 @@
       "estoque": "7"
     },
     {
-      "nome": "repelente",
-      "estoque": "1",
-      "pragas": "mosquito",
-      "id": "chyVpW_"
+      "nome": "teste",
+      "estoque": "2",
+      "pragas": "1",
+      "id": "w1yVNsb"
     }
   ]
 }

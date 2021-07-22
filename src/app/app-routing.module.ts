@@ -6,8 +6,6 @@ import { QuicklinkModule, QuicklinkStrategy } from 'ngx-quicklink';
 import { AuthGuard } from './guards/auth.guard';
 import { ChildsGuard } from './guards/childs.guard';
 import { AlertGuard } from './guards/alert.guard';
-import { ProductUpdateComponent } from './pages/apps/aio-table/product-update/product-update.component';
-import { CustomerCreateUpdateComponent } from './pages/apps/aio-table/customer-create-update/customer-create-update.component';
 
 const routes: VexRoutes = [
   {
@@ -35,11 +33,7 @@ const routes: VexRoutes = [
         data: {
           toolbarShadowEnabled: true
         }
-      },
-      // {
-      //   path: "products/update/:id",
-      //   component: CustomerCreateUpdateComponent
-      // },     
+      },         
       {
         path: 'apps',
         canActivate: [AuthGuard],
