@@ -11,7 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatMenuModule } from '@angular/material/menu';
 import { IconModule } from '@visurel/iconify-angular';
 import { MatDividerModule } from '@angular/material/divider';
-import { CustomerCreateComponent } from './customer-create.component';
+import { ProductCreateComponent } from './product-create.component';
 
 @NgModule({
   imports: [
@@ -28,10 +28,10 @@ import { CustomerCreateComponent } from './customer-create.component';
     IconModule,
     MatDividerModule
   ],
-  declarations: [CustomerCreateComponent],
-  entryComponents: [CustomerCreateComponent],
-  exports: [CustomerCreateComponent],
+  declarations: [ProductCreateComponent],
+  entryComponents: [ProductCreateComponent],
+  exports: [ProductCreateComponent],
 
 })
-export class CustomerCreateModule {
+export class ProductCreateModule {
 }

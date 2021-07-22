@@ -1,13 +1,11 @@
 import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
-import { Observable, of, ReplaySubject } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
-import { Customer } from './interfaces/customer.model';
+import { Observable, ReplaySubject } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
 import { TableColumn } from '../../../../@vex/interfaces/table-column.interface';
-import { aioTableData, aioTableLabels } from '../../../../static-data/aio-table-data';
+import { aioTableLabels } from '../../../../static-data/aio-table-data';
 import { CustomerCreateUpdateComponent } from './customer-create-update/customer-create-update.component';
 import icEdit from '@iconify/icons-ic/twotone-edit';
 import icDelete from '@iconify/icons-ic/twotone-delete';
@@ -28,10 +26,7 @@ import icMail from '@iconify/icons-ic/twotone-mail';
 import icMap from '@iconify/icons-ic/twotone-map';
 import { ProductsApiService } from 'src/app/services/products-api.service';
 import { Produto } from './interfaces/products.models';
-
-import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
-import { CustomerCreateComponent } from './customer-create/customer-create.component';
+import { ProductCreateComponent } from './product-create/product-create.component';
 
 
 @UntilDestroy()
@@ -128,7 +123,7 @@ export class AioTableComponent implements OnInit, AfterViewInit {
   }
 
   createProduct() {
-    this.dialog.open(CustomerCreateComponent).afterClosed().subscribe((product: Produto) => {
+    this.dialog.open(ProductCreateComponent).afterClosed().subscribe((product: Produto) => {
       /**
        * Customer is the updated customer (if the user pressed Save - otherwise it's null)
        */
@@ -165,18 +160,7 @@ export class AioTableComponent implements OnInit, AfterViewInit {
     this.productsService.removeProduct(product).subscribe(() => {
       this.listar()
     })} 
-
-  
-  
-
-  deleteCustomers(product: Produto[]) {
-    /**
-     * Here we are updating our local array.
-     * You would probably make an HTTP request here.
-     */
-    product.forEach(c => this.deleteProduct(c));
-  }
-
+   
   onFilterChange(value: string) {
     if (!this.dataSource) {
       return;

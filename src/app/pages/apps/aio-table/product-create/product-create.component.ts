@@ -9,11 +9,11 @@ import baselineBugReport from '@iconify-icons/ic/baseline-bug-report';
 import baselineInsertChart from '@iconify-icons/ic/baseline-insert-chart';
 
 @Component({
-  selector: 'vex-customer-create',
-  templateUrl: './customer-create.component.html',
-  styleUrls: ['./customer-create.component.scss']
+  selector: 'vex-product-create',
+  templateUrl: './product-create.component.html',
+  styleUrls: ['./product-create.component.scss']
 })
-export class CustomerCreateComponent implements OnInit {
+export class ProductCreateComponent implements OnInit {
 
   product: Produto;
 
@@ -32,7 +32,7 @@ export class CustomerCreateComponent implements OnInit {
   baselineInsertChart = baselineInsertChart;
 
   constructor(@Inject(MAT_DIALOG_DATA) public defaults: any,
-              private dialogRef: MatDialogRef<CustomerCreateComponent>,
+              private dialogRef: MatDialogRef<ProductCreateComponent>,
               private fb: FormBuilder,
               private productsService: ProductsApiService              
               ) {
@@ -46,7 +46,7 @@ export class CustomerCreateComponent implements OnInit {
     }
 
     this.form = this.fb.group({
-      id: [CustomerCreateComponent.id++],
+      id: [ProductCreateComponent.id++],
       nome: this.defaults.nome || '',
       pragas: this.defaults.pragas || '',
       estoque: this.defaults.estoque || '',

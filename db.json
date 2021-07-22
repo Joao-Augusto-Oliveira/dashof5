@@ -17,24 +17,6 @@
       "nome": "Veneno barata",
       "estoque": "7",
       "pragas": "barata"
-    },
-    {
-      "nome": "TESTE",
-      "estoque": "2",
-      "pragas": "2",
-      "id": "AYKRRP-"
-    },
-    {
-      "nome": "Vamos la",
-      "estoque": "construir",
-      "pragas": "trabalhar",
-      "id": "iBMdiIv"
-    },
-    {
-      "nome": "vamos la",
-      "estoque": "ou refresh",
-      "pragas": "trampar",
-      "id": "5KkzhK7"
     }
   ]
 }

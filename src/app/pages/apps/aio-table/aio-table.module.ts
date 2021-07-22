@@ -1,7 +1,6 @@
 import { AioTableDeactivateGuard } from './../../../guards/aio-table-deactivate.guard';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { AioTableRoutingModule } from './aio-table-routing.module';
 import { AioTableComponent } from './aio-table.component';
 import { PageLayoutModule } from '../../../../@vex/components/page-layout/page-layout.module';
@@ -21,8 +20,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { ContainerModule } from '../../../../@vex/directives/container/container.module';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { CustomerCreateModule } from './customer-create/customer-create.module';
-
+import { ProductCreateModule } from './product-create/product-create.module';
 
 @NgModule({
   declarations: [AioTableComponent],
@@ -33,7 +31,7 @@ import { CustomerCreateModule } from './customer-create/customer-create.module';
     FlexLayoutModule,
     BreadcrumbsModule,
     CustomerCreateUpdateModule,
-    CustomerCreateModule,
+    ProductCreateModule,
     MatPaginatorModule,
     MatTableModule,
     MatSortModule,
