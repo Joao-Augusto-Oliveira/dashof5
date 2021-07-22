@@ -27,7 +27,6 @@ export class AuthService {
       
     } else {
       this.usuarioAutenticado = false;
-      // alert('Dados incorretos!')
       this.openDialog();
     }  
   }
@@ -38,7 +37,7 @@ export class AuthService {
 
   openDialog() {
     this.dialog.open(UsermodalComponent).afterClosed().subscribe(()=> {
-      console.log('teste')
+      console.log('Dialog')
     })  
 }
 
