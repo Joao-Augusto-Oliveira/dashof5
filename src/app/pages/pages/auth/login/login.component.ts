@@ -7,6 +7,9 @@ import icVisibilityOff from '@iconify/icons-ic/twotone-visibility-off';
 import { fadeInUp400ms } from '../../../../../@vex/animations/fade-in-up.animation';
 import { Usuario } from './usuario';
 import { AuthService } from './auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { UsermodalComponent } from './usermodal/usermodal.component';
+
 
 @Component({
   selector: 'vex-login',
@@ -34,6 +37,8 @@ export class LoginComponent implements OnInit {
               private cd: ChangeDetectorRef,
               private snackbar: MatSnackBar,
               private authService: AuthService,
+              private dialog: MatDialog,    
+
   ) {}
 
   ngOnInit() {
@@ -58,4 +63,10 @@ export class LoginComponent implements OnInit {
       this.cd.markForCheck();
     }
   }
+
+  openDialog() {
+    this.dialog.open(UsermodalComponent).afterClosed().subscribe(()=> {
+      console.log('teste')
+    })
+    };
 }

@@ -10,7 +10,9 @@ export class AuthService {
 
   usuarioAutenticado: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    ) { }
 
   fazerLogin(usuario: Usuario) {
     if (usuario.nome === "usuario@email.com" &&
@@ -20,6 +22,7 @@ export class AuthService {
       
     } else {
       this.usuarioAutenticado = false;
+      // alert('Dados incorretos!')
     }  
   }
 
@@ -27,5 +30,5 @@ export class AuthService {
     return this.usuarioAutenticado
   }
 
-
+  
 }
