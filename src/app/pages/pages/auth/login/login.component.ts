@@ -37,8 +37,7 @@ export class LoginComponent implements OnInit {
               private cd: ChangeDetectorRef,
               private snackbar: MatSnackBar,
               private authService: AuthService,
-              private dialog: MatDialog,    
-
+              private dialog: MatDialog,   
   ) {}
 
   ngOnInit() {

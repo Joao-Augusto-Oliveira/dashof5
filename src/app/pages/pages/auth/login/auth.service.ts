@@ -2,6 +2,9 @@ import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { Usuario } from './usuario';
 
+import { UsermodalComponent } from './usermodal/usermodal.component';
+import { MatDialog } from '@angular/material/dialog';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,6 +15,8 @@ export class AuthService {
 
   constructor(
     private router: Router,
+    private dialog: MatDialog,    
+
     ) { }
 
   fazerLogin(usuario: Usuario) {
@@ -23,6 +28,7 @@ export class AuthService {
     } else {
       this.usuarioAutenticado = false;
       // alert('Dados incorretos!')
+      this.openDialog();
     }  
   }
 
@@ -30,5 +36,10 @@ export class AuthService {
     return this.usuarioAutenticado
   }
 
-  
+  openDialog() {
+    this.dialog.open(UsermodalComponent).afterClosed().subscribe(()=> {
+      console.log('teste')
+    })  
+}
+
 }
