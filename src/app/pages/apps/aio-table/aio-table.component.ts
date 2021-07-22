@@ -31,6 +31,7 @@ import { Produto } from './interfaces/products.models';
 
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { CustomerCreateComponent } from './customer-create/customer-create.component';
 
 
 @UntilDestroy()
@@ -126,8 +127,8 @@ export class AioTableComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-  createCustomer() {
-    this.dialog.open(CustomerCreateUpdateComponent).afterClosed().subscribe((product: Produto) => {
+  createProduct() {
+    this.dialog.open(CustomerCreateComponent).afterClosed().subscribe((product: Produto) => {
       /**
        * Customer is the updated customer (if the user pressed Save - otherwise it's null)
        */
@@ -140,21 +141,21 @@ export class AioTableComponent implements OnInit, AfterViewInit {
     });
   }
 
-  updateCustomer(customer: Customer) {
+  updateCustomer(product: Produto) {
     this.dialog.open(CustomerCreateUpdateComponent, {
-      data: customer
+      data: product
     }).afterClosed().subscribe(updatedCustomer => {
       /**
        * Customer is the updated customer (if the user pressed Save - otherwise it's null)
        */
       if (updatedCustomer) {
-        /**
-         * Here we are updating our local array.
-         * You would probably make an HTTP request here.
-         */
-        const index = this.products.findIndex((existingCustomer) => existingCustomer.id === updatedCustomer.id);
-        this.products[index] = new Produto(updatedCustomer);
-        this.subject$.next(this.products);
+        this.productsService.updateProduct(product).subscribe(()=> {
+          this.listar()
+        })
+        
+        // const index = this.products.findIndex((existingCustomer) => existingCustomer.id === updatedCustomer.id);
+        // this.products[index] = new Produto(updatedCustomer);
+        // this.subject$.next(this.products);
         this.formMudou = true;
       }
     });

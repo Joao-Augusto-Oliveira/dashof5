@@ -18,11 +18,19 @@ export class ProductsApiService {
     }
 
     createProduct(product){
-        return this.httpClient.post<Produto[]>(this.API, product).pipe(take(1))
+        return this.httpClient.post<Produto[]>(this.API, product).pipe(
+            map((obj)=> obj)
+            )
+    }
+
+    updateProduct(product){
+        return this.httpClient.put<Produto[]>(this.API + "/" + product.id, product)
     }
 
     removeProduct(product){
         return this.httpClient.delete<Produto[]>(this.API + "/" + product.id)
     }
+
+    
     
 }

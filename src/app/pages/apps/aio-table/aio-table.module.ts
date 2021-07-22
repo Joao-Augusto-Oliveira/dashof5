@@ -21,6 +21,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { ContainerModule } from '../../../../@vex/directives/container/container.module';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { CustomerCreateModule } from './customer-create/customer-create.module';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     FlexLayoutModule,
     BreadcrumbsModule,
     CustomerCreateUpdateModule,
+    CustomerCreateModule,
     MatPaginatorModule,
     MatTableModule,
     MatSortModule,

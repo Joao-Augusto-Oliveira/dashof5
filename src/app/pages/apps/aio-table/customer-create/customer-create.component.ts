@@ -16,17 +16,17 @@ import { Produto } from '../interfaces/products.models';
 import { ProductsApiService } from 'src/app/services/products-api.service';
 
 @Component({
-  selector: 'vex-customer-create-update',
-  templateUrl: './customer-create-update.component.html',
-  styleUrls: ['./customer-create-update.component.scss']
+  selector: 'vex-customer-create',
+  templateUrl: './customer-create.component.html',
+  styleUrls: ['./customer-create.component.scss']
 })
-export class CustomerCreateUpdateComponent implements OnInit {
+export class CustomerCreateComponent implements OnInit {
 
   product: Produto;
 
-  nome: string;
-  pragas: string;
-  estoque: string;
+  nome: string = "";
+  pragas: string = "";
+  estoque: string = "";
 
   static id = 100;
 
@@ -47,7 +47,7 @@ export class CustomerCreateUpdateComponent implements OnInit {
   icPhone = icPhone;
 
   constructor(@Inject(MAT_DIALOG_DATA) public defaults: any,
-              private dialogRef: MatDialogRef<CustomerCreateUpdateComponent>,
+              private dialogRef: MatDialogRef<CustomerCreateComponent>,
               private fb: FormBuilder,
               private productsService: ProductsApiService              
               ) {
@@ -61,7 +61,7 @@ export class CustomerCreateUpdateComponent implements OnInit {
     }
 
     this.form = this.fb.group({
-      id: [CustomerCreateUpdateComponent.id++],
+      id: [CustomerCreateComponent.id++],
       nome: this.defaults.nome || '',
       pragas: this.defaults.pragas || '',
       estoque: this.defaults.estoque || '',
@@ -77,11 +77,15 @@ export class CustomerCreateUpdateComponent implements OnInit {
   }
 
   createCustomer() {
-
     const valorEmitir = {nome: this.nome, estoque: this.estoque, pragas: this.pragas}
     this.productsService.createProduct(valorEmitir).subscribe(resultado => {
-      console.log(resultado);    
+      console.log(resultado);      
+
+      this.dialogRef.close();
+      location.reload();
+
     })
+
 
   }
 

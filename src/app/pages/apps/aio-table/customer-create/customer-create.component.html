@@ -20,7 +20,7 @@
     <div class="flex flex-col sm:flex-row">
       <mat-form-field class="mt-6 flex-auto">
         <mat-label>Nome</mat-label>
-        <input cdkFocusInitial formControlName="nome" matInput>
+        <input  [(ngModel)]="nome" cdkFocusInitial formControlName="nome" matInput>
 
         <mat-icon [icIcon]="icPerson" class="mr-3" matPrefix></mat-icon>
       </mat-form-field>     
@@ -28,7 +28,7 @@
 
     <mat-form-field class="flex-auto">
       <mat-label>Pragas</mat-label>
-      <input formControlName="pragas" matInput>
+      <input [(ngModel)]="pragas" formControlName="pragas" matInput>
 
       <mat-icon [icIcon]="icEditLocation" class="mr-3" matPrefix></mat-icon>
     </mat-form-field>
@@ -36,7 +36,7 @@
 
     <mat-form-field class="flex-auto">
       <mat-label>QTD/PORÇÃO</mat-label>
-      <input formControlName="estoque" matInput>
+      <input  [(ngModel)]="estoque" formControlName="estoque" matInput>
 
       <mat-icon [icIcon]="icPhone" class="mr-3" matPrefix></mat-icon>
     </mat-form-field>
@@ -46,8 +46,6 @@
   <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close type="button">CANCEL</button>
     <button *ngIf="isCreateMode()" color="primary" mat-button type="submit">CREATE CUSTOMER</button>
-    <button *ngIf="isUpdateMode()" color="primary" mat-button
-    type="submit">UPDATE CUSTOMER</button>
-  </mat-dialog-actions>
+    </mat-dialog-actions>
 </form>
 
