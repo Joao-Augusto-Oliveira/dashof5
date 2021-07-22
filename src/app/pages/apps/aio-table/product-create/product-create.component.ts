@@ -61,9 +61,11 @@ export class ProductCreateComponent implements OnInit {
 
   createProduct() {
     const newValue = {nome: this.nome, estoque: this.estoque, pragas: this.pragas}
-    this.productsService.createProduct(newValue).subscribe(resultado => {
+    this.productsService.createProduct(newValue).subscribe((resultado) => {
       this.dialogRef.close();
-      location.reload();
+      // this.listar()
+      // location.reload();
+      
     })
   }
 

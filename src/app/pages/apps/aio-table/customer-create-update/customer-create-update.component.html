@@ -30,7 +30,7 @@
       <mat-label>Pragas</mat-label>
       <input formControlName="pragas" matInput>
 
-      <mat-icon [icIcon]="icEditLocation" class="mr-3" matPrefix></mat-icon>
+      <mat-icon [icIcon]="baselineBugReport" class="mr-3" matPrefix></mat-icon>
     </mat-form-field>
   
 
@@ -38,16 +38,15 @@
       <mat-label>QTD/PORÇÃO</mat-label>
       <input formControlName="estoque" matInput>
 
-      <mat-icon [icIcon]="icPhone" class="mr-3" matPrefix></mat-icon>
+      <mat-icon [icIcon]="baselineInsertChart" class="mr-3" matPrefix></mat-icon>
     </mat-form-field>
     
   </mat-dialog-content>
 
   <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close type="button">CANCEL</button>
-    <button *ngIf="isCreateMode()" color="primary" mat-button type="submit">CREATE CUSTOMER</button>
     <button *ngIf="isUpdateMode()" color="primary" mat-button
-    type="submit">UPDATE CUSTOMER</button>
+    type="submit">UPDATE PRODUCT</button>
   </mat-dialog-actions>
 </form>
 

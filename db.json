@@ -2,7 +2,7 @@
   "produtos": [
     {
       "id": "3",
-      "nome": "Veneno abelha",
+      "nome": "Veneno ",
       "pragas": "abel",
       "estoque": "5"
     },

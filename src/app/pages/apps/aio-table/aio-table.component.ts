@@ -142,6 +142,7 @@ export class AioTableComponent implements OnInit, AfterViewInit {
       data: product
     }).afterClosed().subscribe(() => {
       this.listar();
+      this.formMudou = true;
       })      
     };
   
