@@ -6,12 +6,14 @@ import { QuicklinkModule, QuicklinkStrategy } from 'ngx-quicklink';
 import { AuthGuard } from './guards/auth.guard';
 import { ChildsGuard } from './guards/childs.guard';
 import { AlertGuard } from './guards/alert.guard';
+import { ProductUpdateComponent } from './pages/apps/aio-table/product-update/product-update.component';
+import { CustomerCreateUpdateComponent } from './pages/apps/aio-table/customer-create-update/customer-create-update.component';
 
 const routes: VexRoutes = [
   {
     path: 'login',
     loadChildren: () => import('./pages/pages/auth/login/login.module').then(m => m.LoginModule),
-  },
+  },  
   {
     path: 'forgot-password',
     loadChildren: () => import('./pages/pages/auth/forgot-password/forgot-password.module').then(m => m.ForgotPasswordModule),
@@ -33,7 +35,11 @@ const routes: VexRoutes = [
         data: {
           toolbarShadowEnabled: true
         }
-      },     
+      },
+      // {
+      //   path: "products/update/:id",
+      //   component: CustomerCreateUpdateComponent
+      // },     
       {
         path: 'apps',
         canActivate: [AuthGuard],
@@ -50,8 +56,8 @@ const routes: VexRoutes = [
           {
             path: 'aio-table',
             loadChildren: () => import('./pages/apps/aio-table/aio-table.module').then(m => m.AioTableModule),
-            canActivateChild: [ChildsGuard],                      
-          }               
+            canActivateChild: [ChildsGuard],                          
+          },               
         ]
       },
       {
@@ -61,7 +67,7 @@ const routes: VexRoutes = [
           {
             path: 'indicadores',
             loadChildren: () => import('./pages/indicadores/indicadores.module').then(m => m.IndicadoresModule),
-            // canActivateChild: [AlertGuard],
+            canActivateChild: [AlertGuard],
           },
         ]
       },      

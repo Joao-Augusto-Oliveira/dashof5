@@ -1,0 +1,36 @@
+<div>
+    <h2>Alterar Produto</h2>
+    <form>
+        <div>
+            <input 
+                formControlName="nome" matInput
+                [(ngModel)]="product.nome"
+                placeholder="Nome"
+               >
+        </div>
+
+        <div>
+            <input 
+                formControlName="pragas" matInput
+                [(ngModel)]="product.pragas"
+                placeholder="Pragas"
+               >
+        </div>
+
+        <div>
+            <input 
+                formControlName="estoque" matInput
+                [(ngModel)]="product.estoque"
+                placeholder="Estoque"
+               >
+        </div>
+        
+    </form>
+    <button mat-raised-button (click)="updateProduct()" color="primary">
+        Atualizar
+    </button>
+    
+    <button mat-raised-button (click)="cancel()">
+        Cancelar
+    </button>
+</div>

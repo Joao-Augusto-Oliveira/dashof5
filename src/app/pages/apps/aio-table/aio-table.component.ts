@@ -124,6 +124,8 @@ export class AioTableComponent implements OnInit, AfterViewInit {
 
   createProduct() {
     this.dialog.open(ProductCreateComponent).afterClosed().subscribe((product: Produto) => {
+      this.formMudou = true;
+
       /**
        * Customer is the updated customer (if the user pressed Save - otherwise it's null)
        */
@@ -131,7 +133,6 @@ export class AioTableComponent implements OnInit, AfterViewInit {
         
         this.products.unshift(new Produto(product));
         this.subject$.next(this.products);
-        this.formMudou = true;
       }
     });
   }
@@ -139,22 +140,11 @@ export class AioTableComponent implements OnInit, AfterViewInit {
   updateCustomer(product: Produto) {
     this.dialog.open(CustomerCreateUpdateComponent, {
       data: product
-    }).afterClosed().subscribe(updatedCustomer => {
-      /**
-       * Customer is the updated customer (if the user pressed Save - otherwise it's null)
-       */
-      if (updatedCustomer) {
-        this.productsService.updateProduct(product).subscribe(()=> {
-          this.listar()
-        })
-        
-        // const index = this.products.findIndex((existingCustomer) => existingCustomer.id === updatedCustomer.id);
-        // this.products[index] = new Produto(updatedCustomer);
-        // this.subject$.next(this.products);
-        this.formMudou = true;
-      }
-    });
-  }
+    }).afterClosed().subscribe(() => {
+      this.listar();
+      })      
+    };
+  
 
   deleteProduct(product: Produto) {
     this.productsService.removeProduct(product).subscribe(() => {

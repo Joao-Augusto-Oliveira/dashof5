@@ -87,19 +87,16 @@ export class CustomerCreateUpdateComponent implements OnInit {
   
 
   updateCustomer() {
+    const customer = this.form.value;
+    customer.id = this.defaults.id;
 
-    console.log('update')
-    // const customer = this.form.value;
-    // customer.id = this.defaults.id;
-
-    // this.dialogRef.close(customer);
-
-    // this.productsService.updateProduct(customer.id).subscribe(() => {
-    //   console.log('update')
-    // })
+    this.dialogRef.close(customer);
+    this.productsService.update(customer).subscribe(data => data.id);
+     
+    }
 
 
-  }
+  
 
   isCreateMode() {
     return this.mode === 'create';

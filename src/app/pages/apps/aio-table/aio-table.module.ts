@@ -21,6 +21,7 @@ import { ContainerModule } from '../../../../@vex/directives/container/container
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { ProductCreateModule } from './product-create/product-create.module';
+import { ProductUpdateModule } from './product-update/product-update.module';
 
 @NgModule({
   declarations: [AioTableComponent],
@@ -45,7 +46,8 @@ import { ProductCreateModule } from './product-create/product-create.module';
     ReactiveFormsModule,
     ContainerModule,
     MatSelectModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    ProductUpdateModule
   ],
   providers: [AioTableDeactivateGuard]
 })

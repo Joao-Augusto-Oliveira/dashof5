@@ -5,7 +5,6 @@ import { AioTableDeactivateGuard } from 'src/app/guards/aio-table-deactivate.gua
 import { VexRoutes } from '../../../../@vex/interfaces/vex-route.interface';
 import { AioTableComponent } from './aio-table.component';
 
-
 const routes: VexRoutes = [
   {
     path: '',
@@ -13,7 +12,13 @@ const routes: VexRoutes = [
     data: {
       toolbarShadowEnabled: true
     },
-    canDeactivate: [AioTableDeactivateGuard],    
+    canDeactivate: [AioTableDeactivateGuard], 
+    children: [
+      {
+        path: "products/update/:id",
+        loadChildren: () => import('./customer-create-update/customer-create-update.module').then(m => m.CustomerCreateUpdateModule),
+      }
+    ]   
   },
  
 ];
