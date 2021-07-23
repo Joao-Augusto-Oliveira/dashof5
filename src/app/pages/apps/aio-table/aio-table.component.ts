@@ -24,6 +24,7 @@ import { ProductUpdateComponent } from './product-update/product-update.componen
 import { FormCanDeactivate } from 'src/app/guards/form-candeactivate';
 import { Observable, ReplaySubject } from 'rxjs';
 import { filter } from 'rxjs/operators';
+import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 
 @UntilDestroy()
 @Component({
@@ -101,12 +102,12 @@ export class AioTableComponent implements OnInit, AfterViewInit, FormCanDeactiva
       this.dataSource = new MatTableDataSource(products);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-    });
-   
+    });   
       
     this.searchCtrl.valueChanges.pipe(
       untilDestroyed(this)
     ).subscribe(value => this.onFilterChange(value));
+
   }
 
   ngAfterViewInit() {
@@ -168,7 +169,7 @@ export class AioTableComponent implements OnInit, AfterViewInit, FormCanDeactiva
 
   podeMudarRota(){
     if (this.formMudou) {
-      confirm('Tem certeza que deseja sair dessa página?')
+      this.openDialog()
     }
     return true;
   }
@@ -176,5 +177,11 @@ export class AioTableComponent implements OnInit, AfterViewInit, FormCanDeactiva
   podeDesativar(){
     return this.podeMudarRota();
   }
+
+  openDialog() {
+    this.dialog.open(ConfirmModalComponent).afterClosed().subscribe(()=> {
+      console.log('teste')
+    })
+    };
 
 }

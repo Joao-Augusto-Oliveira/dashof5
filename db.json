@@ -2,45 +2,21 @@
   "produtos": [
     {
       "id": "3",
-      "nome": "ou refr",
-      "pragas": "a",
-      "estoque": ""
+      "nome": "Regente",
+      "pragas": "Abelha",
+      "estoque": "3"
     },
     {
       "id": "4",
-      "nome": "Veneno b",
-      "pragas": "mosca",
+      "nome": "Veneno abel",
+      "pragas": "barata ",
       "estoque": "7"
     },
     {
-      "id": "w1yVNsb",
-      "nome": "te",
-      "pragas": "1",
-      "estoque": "2"
-    },
-    {
-      "nome": "",
-      "estoque": "t",
-      "pragas": "e",
-      "id": "gWYCU2c"
-    },
-    {
-      "id": 100,
-      "nome": "teste",
-      "pragas": "1",
-      "estoque": "2"
-    },
-    {
-      "id": 101,
-      "nome": "mais um",
-      "pragas": "teste",
-      "estoque": "formcontrol"
-    },
-    {
-      "nome": "teste",
-      "estoque": "2",
-      "pragas": "1",
-      "id": "zWNGFEv"
+      "id": "gJNd4-E",
+      "nome": "Veneno",
+      "pragas": "marimbondo",
+      "estoque": "1"
     }
   ]
 }

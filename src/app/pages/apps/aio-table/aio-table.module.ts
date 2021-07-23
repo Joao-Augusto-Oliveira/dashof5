@@ -21,9 +21,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { ProductCreateModule } from './product-create/product-create.module';
 import { ProductUpdateModule } from './product-update/product-update.module';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 
 @NgModule({
-  declarations: [AioTableComponent],
+  declarations: [AioTableComponent, ConfirmModalComponent],
   imports: [
     CommonModule,
     AioTableRoutingModule,
@@ -46,6 +48,7 @@ import { ProductUpdateModule } from './product-update/product-update.module';
     ContainerModule,
     MatSelectModule,
     MatButtonToggleModule,    
+    MatDialogModule
   ],
   providers: [AioTableDeactivateGuard]
 })

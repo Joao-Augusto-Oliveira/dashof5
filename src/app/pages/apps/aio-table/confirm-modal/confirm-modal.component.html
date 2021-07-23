@@ -1,0 +1,18 @@
+<div
+  [icIcon]="bxErrorAlt" 
+  color="#F27474" width="80" height="80"
+  class="icon"  
+  align="center"
+  >
+</div>
+
+<div class="text" align="center">
+  <h1 mat-dialog-title>Atenção!</h1>
+<div mat-dialog-content>
+    <mat-label>Você fez alterações nos dados. Deseja continuar?</mat-label>
+</div>
+<div mat-dialog-actions align="center">
+  <button mat-raised-button color="primary" (click)="onNoClick()">Sim</button>
+  <button mat-raised-button color="primary" (click)="onReturnClick()">Não</button>
+</div>
+</div>
