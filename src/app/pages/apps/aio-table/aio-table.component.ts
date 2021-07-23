@@ -21,6 +21,9 @@ import { ProductsApiService } from 'src/app/services/products-api.service';
 import { Produto } from './interfaces/products.models';
 import { ProductCreateComponent } from './product-create/product-create.component';
 import { ProductUpdateComponent } from './product-update/product-update.component';
+import { FormCanDeactivate } from 'src/app/guards/form-candeactivate';
+import { Observable, ReplaySubject } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 @UntilDestroy()
 @Component({
@@ -40,14 +43,13 @@ import { ProductUpdateComponent } from './product-update/product-update.componen
     }
   ]
 })
-export class AioTableComponent implements OnInit, AfterViewInit {
+export class AioTableComponent implements OnInit, AfterViewInit, FormCanDeactivate {
 
   layoutCtrl = new FormControl('boxed');
 
   formMudou: boolean = false; 
 
   products: Produto[];
-
 
   @Input()
   columns: TableColumn<Produto>[] = [
@@ -93,7 +95,14 @@ export class AioTableComponent implements OnInit, AfterViewInit {
   }
   
   ngOnInit() {
-    this.listar();   
+    this.listar();  
+    
+    this.productsService.getAllProducts().subscribe(products => {
+      this.dataSource = new MatTableDataSource(products);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
+   
       
     this.searchCtrl.valueChanges.pipe(
       untilDestroyed(this)
@@ -101,8 +110,7 @@ export class AioTableComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    console.log('teste')
   }
 
   createProduct() {
@@ -163,6 +171,10 @@ export class AioTableComponent implements OnInit, AfterViewInit {
       confirm('Tem certeza que deseja sair dessa página?')
     }
     return true;
+  }
+
+  podeDesativar(){
+    return this.podeMudarRota();
   }
 
 }

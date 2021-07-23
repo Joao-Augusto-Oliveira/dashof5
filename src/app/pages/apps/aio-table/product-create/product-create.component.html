@@ -20,7 +20,7 @@
     <div class="flex flex-col sm:flex-row">
       <mat-form-field class="mt-6 flex-auto">
         <mat-label>Nome</mat-label>
-        <input  [(ngModel)]="nome" cdkFocusInitial formControlName="nome" matInput>
+        <input cdkFocusInitial [(ngModel)]="nome" formControlName="nome" matInput>
 
         <mat-icon [icIcon]="icPerson" class="mr-3" matPrefix></mat-icon>
       </mat-form-field>     
@@ -36,7 +36,7 @@
 
     <mat-form-field class="flex-auto">
       <mat-label>QTD/PORÇÃO</mat-label>
-      <input  [(ngModel)]="estoque" formControlName="estoque" matInput>
+      <input [(ngModel)]="estoque" formControlName="estoque" matInput>
 
       <mat-icon [icIcon]="baselineInsertChart" class="mr-3" matPrefix></mat-icon>
     </mat-form-field>

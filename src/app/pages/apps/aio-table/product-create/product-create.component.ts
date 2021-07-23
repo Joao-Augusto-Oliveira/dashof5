@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup} from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import icClose from '@iconify/icons-ic/twotone-close';
 import icPerson from '@iconify/icons-ic/twotone-person';
@@ -16,14 +16,16 @@ import baselineInsertChart from '@iconify-icons/ic/baseline-insert-chart';
 export class ProductCreateComponent implements OnInit {
 
   product: Produto;
-
-  nome: string = "";
-  pragas: string = "";
-  estoque: string = "";
+ 
+    nome: string = "";
+    pragas: string = "";
+    estoque: string = "";  
 
   static id = 100;
 
+
   form: FormGroup;
+  
   mode: 'create' | 'update' = 'create';
 
   icClose = icClose;
@@ -63,9 +65,6 @@ export class ProductCreateComponent implements OnInit {
     const newValue = {nome: this.nome, estoque: this.estoque, pragas: this.pragas}
     this.productsService.createProduct(newValue).subscribe((resultado) => {
       this.dialogRef.close();
-      // this.listar()
-      // location.reload();
-      
     })
   }
 

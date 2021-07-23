@@ -1,18 +1,20 @@
-import { AlertGuard } from './alert.guard';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot } from "@angular/router";
-import { AioTableComponent } from '../pages/apps/aio-table/aio-table.component';
+import { FormCanDeactivate } from './form-candeactivate';
 
 @Injectable()
-export class AioTableDeactivateGuard implements CanDeactivate<AioTableComponent> {
+export class AioTableDeactivateGuard implements CanDeactivate<FormCanDeactivate> {
         
         canDeactivate(
-            component: AioTableComponent,
+            component: FormCanDeactivate,
             route: ActivatedRouteSnapshot,
             state: RouterStateSnapshot
-        ): Observable<boolean>|Promise<boolean>|boolean {
-                        
-            return component.podeMudarRota ? component.podeMudarRota() : true;
-    }
+        ): Observable<boolean>|Promise<boolean>|boolean {                       
+           
+            console.log('acesso negado')
+
+            return component.podeDesativar();
+
+        }
 }

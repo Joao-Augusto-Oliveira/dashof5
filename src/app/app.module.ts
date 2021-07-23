@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { MatDialogModule } from '@angular/material/dialog'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +22,7 @@ import { AioTableDeactivateGuard } from './guards/aio-table-deactivate.guard';
     BrowserAnimationsModule,
     HttpClientModule,
     CustomLayoutModule,
+    MatDialogModule,
 
     // Vex
     VexModule,
