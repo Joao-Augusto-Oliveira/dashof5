@@ -31,7 +31,7 @@
              fxLayout="row"
              fxLayoutAlign="start center">
           <ic-icon [icIcon]="icSearch" size="20px"></ic-icon>
-          <input [formControl]="searchCtrl"
+          <input (keyup)="filter = getValue($event)"
                  class="px-4 py-3 border-0 outline-none w-full bg-transparent"
                  placeholder="Search..."
                  type="search">
@@ -65,7 +65,7 @@
       </div>
 
       <table 
-      @stagger [dataSource]="products" 
+      @stagger [dataSource]="products | filterByName: filter" 
       class="w-full" mat-table matSort>
 
         <!--- Note that these columns can be defined in any order.
@@ -88,14 +88,7 @@
             </mat-checkbox>
           </td>
         </ng-container>
-
-        <!-- Image Column -->
-        <ng-container matColumnDef="image">
-          <th *matHeaderCellDef mat-header-cell></th>
-          <td *matCellDef="let row" class="w-8 min-w-8 pr-0" mat-cell>
-            <img [src]="row['imageSrc']" class="avatar h-8 w-8 align-middle">
-          </td>
-        </ng-container>
+      
 
         <!-- Text Columns -->
         <ng-container *ngFor="let column of columns; trackBy: trackByProperty">

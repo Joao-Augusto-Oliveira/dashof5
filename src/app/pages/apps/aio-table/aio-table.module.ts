@@ -23,9 +23,10 @@ import { ProductCreateModule } from './product-create/product-create.module';
 import { ProductUpdateModule } from './product-update/product-update.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
+import { filterByName } from './filter-by-name.pipe';
 
 @NgModule({
-  declarations: [AioTableComponent, ConfirmModalComponent],
+  declarations: [AioTableComponent, ConfirmModalComponent, filterByName],
   imports: [
     CommonModule,
     AioTableRoutingModule,
@@ -48,7 +49,7 @@ import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
     ContainerModule,
     MatSelectModule,
     MatButtonToggleModule,    
-    MatDialogModule
+    MatDialogModule,
   ],
   providers: [AioTableDeactivateGuard]
 })

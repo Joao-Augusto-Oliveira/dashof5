@@ -52,6 +52,8 @@ export class AioTableComponent implements OnInit, AfterViewInit, FormCanDeactiva
 
   products: Produto[];
 
+  filter: string = '';
+
   @Input()
   columns: TableColumn<Produto>[] = [
     { label: 'Nome', property: 'nome', type: 'text', visible: true, cssClasses: ['font-medium'] },
@@ -65,7 +67,6 @@ export class AioTableComponent implements OnInit, AfterViewInit, FormCanDeactiva
   pageSizeOptions: number[] = [5, 10, 20, 50];
   dataSource: MatTableDataSource<Produto> | null;
   selection = new SelectionModel<Produto>(true, []);
-  searchCtrl = new FormControl();
 
   labels = aioTableLabels;
 
@@ -102,12 +103,11 @@ export class AioTableComponent implements OnInit, AfterViewInit, FormCanDeactiva
       this.dataSource = new MatTableDataSource(products);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-    });   
-      
-    this.searchCtrl.valueChanges.pipe(
-      untilDestroyed(this)
-    ).subscribe(value => this.onFilterChange(value));
+    });        
+  }
 
+  getValue(event: Event): string {
+    return (event.target as HTMLInputElement).value
   }
 
   ngAfterViewInit() {
