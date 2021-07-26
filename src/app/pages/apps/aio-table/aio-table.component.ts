@@ -16,14 +16,12 @@ import { fadeInUp400ms } from '../../../../@vex/animations/fade-in-up.animation'
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldDefaultOptions } from '@angular/material/form-field';
 import { stagger40ms } from '../../../../@vex/animations/stagger.animation';
 import { FormControl } from '@angular/forms';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { UntilDestroy } from '@ngneat/until-destroy';
 import { ProductsApiService } from 'src/app/services/products-api.service';
 import { Produto } from './interfaces/products.models';
 import { ProductCreateComponent } from './product-create/product-create.component';
 import { ProductUpdateComponent } from './product-update/product-update.component';
 import { FormCanDeactivate } from 'src/app/guards/form-candeactivate';
-import { Observable, ReplaySubject } from 'rxjs';
-import { filter } from 'rxjs/operators';
 import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 
 @UntilDestroy()
@@ -64,7 +62,6 @@ export class AioTableComponent implements OnInit, AfterViewInit, FormCanDeactiva
   
   ];
   pageSize = 10;
-  pageSizeOptions: number[] = [5, 10, 20, 50];
   dataSource: MatTableDataSource<Produto> | null;
   selection = new SelectionModel<Produto>(true, []);
 
@@ -77,8 +74,8 @@ export class AioTableComponent implements OnInit, AfterViewInit, FormCanDeactiva
   icFilterList = icFilterList;
   icMoreHoriz = icMoreHoriz;
 
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
 
   constructor(
     private dialog: MatDialog,
@@ -93,18 +90,16 @@ export class AioTableComponent implements OnInit, AfterViewInit, FormCanDeactiva
   listar(){
     this.productsService.getAllProducts().subscribe(products => {
       this.products = products;
-    }) 
-  }
-  
-  ngOnInit() {
-    this.listar();  
-    
-    this.productsService.getAllProducts().subscribe(products => {
-      this.dataSource = new MatTableDataSource(products);
+      this.dataSource = new MatTableDataSource(this.products);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-    });        
-  }
+
+    }) 
+  }  
+    
+  ngOnInit() {
+    this.listar();
+    } 
 
   getValue(event: Event): string {
     return (event.target as HTMLInputElement).value
@@ -112,7 +107,7 @@ export class AioTableComponent implements OnInit, AfterViewInit, FormCanDeactiva
 
   ngAfterViewInit() {
     console.log('teste')
-  }
+      }
 
   createProduct() {
     this.dialog.open(ProductCreateComponent).afterClosed().subscribe((product: Produto) => {

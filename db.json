@@ -19,22 +19,10 @@
       "estoque": "1"
     },
     {
-      "nome": "teste",
+      "nome": "Repelente",
       "estoque": "2",
-      "pragas": "1",
-      "id": "sY7en7K"
-    },
-    {
-      "nome": "pomada",
-      "estoque": "2",
-      "pragas": "bichos",
-      "id": "eGABHRw"
-    },
-    {
-      "nome": "novo",
-      "estoque": "2",
-      "pragas": "1",
-      "id": "UkQy9kJ"
+      "pragas": "mosquito",
+      "id": "iIxKPnX"
     }
   ]
 }
